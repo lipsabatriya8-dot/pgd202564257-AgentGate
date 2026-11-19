@@ -1,0 +1,12 @@
+# PROMPTS.md — Agent Gatekeeper Development Log
+**Student Enrolment Number:** pgd202564257  
+**Company Chosen:** Amazon (Online Store — Digit 7)  
+**Coding Tool Used:** Google Antigravity  
+
+## Main Prompt Given to Google Antigravity
+> "Build a clean, working single-page web application called 'Agent Gatekeeper' for Amazon (an online store). Display the title 'Amazon Agent Gatekeeper' and prominently show the Student Enrolment Number: 'pgd202564257' on the main screen. Include an Agent Registration & Revocation Panel (The Wells Fargo Rule) that records registration and revocation timestamps, a Request Simulator Panel evaluating 7 strict rules (Revoked -> BLOCK, Unknown -> BLOCK, view order -> ALLOW, place order > ₹5,000 -> ASK CUSTOMER, place order <= ₹5,000 -> ALLOW, return -> ALLOW, refund -> ASK CUSTOMER), and an Audit Log Table with CSV export."
+
+## What I Checked and Changed Myself
+1. **Workspace Cleanup:** Antigravity created a temporary `test.txt` file during directory verification. I inspected the folder and manually deleted `test.txt` so only clean project files remain.
+2. **Rule Priority Verification:** I checked the rule evaluation order in `script.js` to confirm that **Rule 1 (Revoked Agent)** is checked *before* **Rule 3 (Read-only `view order`)**, ensuring a revoked agent cannot view past order history after access is cancelled.
+3. **Boundary Testing:** I tested both sides of the ₹5,000 spending limit (`₹8,500` vs `₹1,200`) and verified that the exported CSV audit log records all timestamps, decisions, and rule numbers accurately.
