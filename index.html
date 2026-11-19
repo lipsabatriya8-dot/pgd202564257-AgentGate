@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Agent Gatekeeper | AI Governance & Compliance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Amazon Global Header -->
+  <header class="amazon-header">
+    <div class="header-main">
+      <div class="header-left">
+        <div class="amazon-brand">
+          <div class="logo-group">
+            <span class="brand-name">amazon</span>
+            <span class="brand-smile"></span>
+          </div>
+          <span class="gatekeeper-pill">AGENT GATEKEEPER</span>
+        </div>
+        <div class="tagline">Autonomous AI Commerce Policy & Compliance Engine</div>
+      </div>
+
+      <!-- Prominent Student Enrolment Display -->
+      <div class="header-right">
+        <div class="student-badge-container">
+          <span class="student-label">STUDENT ENROLMENT NO.</span>
+          <span class="student-id" id="displayStudentId">pgd202564257</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Info Banner -->
+    <div class="header-sub">
+      <div class="compliance-tag">
+        <span class="status-indicator live-pulse"></span>
+        <span>The Wells Fargo Rule: Strict Customer Agent Authorization Active</span>
+      </div>
+      <div class="policy-limit">
+        <span class="limit-badge">Autonomous Limit: <strong>₹5,000</strong></span>
+        <span class="date-clock" id="liveClock">2026-11-19 17:28:00</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- Top KPI Stats Row -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon icon-blue">🤖</div>
+        <div class="stat-content">
+          <div class="stat-value" id="statTotalAgents">2</div>
+          <div class="stat-label">Registered Agents</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon icon-green">🛡️</div>
+        <div class="stat-content">
+          <div class="stat-value" id="statActiveAgents">1</div>
+          <div class="stat-label">Active Agents</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon icon-red">⛔</div>
+        <div class="stat-content">
+          <div class="stat-value" id="statRevokedAgents">1</div>
+          <div class="stat-label">Revoked Agents</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon icon-amber">📋</div>
+        <div class="stat-content">
+          <div class="stat-value" id="statTotalEvaluations">0</div>
+          <div class="stat-label">Requests Evaluated</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main 2-Column Work Area -->
+    <div class="panels-grid">
+      
+      <!-- Panel 1: Agent Registration & Revocation (The Wells Fargo Rule) -->
+      <section class="card panel-agents">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="badge-accent">Module 1</span>
+            <h2>Agent Registration & Revocation Panel</h2>
+          </div>
+          <span class="rule-subtitle">The Wells Fargo Rule: Immediate Revocation Control</span>
+        </div>
+
+        <div class="card-body">
+          <!-- Register Form -->
+          <form id="agentRegisterForm" class="register-form">
+            <div class="form-title">
+              <span>Register New AI Agent</span>
+              <span class="form-hint">Grants delegated autonomous access to customer's account</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="regCustomerName">Customer Name <span class="required">*</span></label>
+                <input type="text" id="regCustomerName" placeholder="e.g. Lipsa, Rahul, Priya" required>
+              </div>
+              <div class="form-group">
+                <label for="regAgentName">Agent Name <span class="required">*</span></label>
+                <input type="text" id="regAgentName" placeholder="e.g. ShopBot, AlexaCopilot" required>
+              </div>
+            </div>
+            <div class="form-row form-row-bottom">
+              <div class="form-group">
+                <label for="regTimestamp">Registration Timestamp</label>
+                <input type="text" id="regTimestamp" readonly>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="btnRegisterAgent">
+                  <span class="btn-icon">➕</span> Register Agent
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Registered Agents Table -->
+          <div class="table-section-header">
+            <div class="section-title">
+              <h3>Registered Customer Agents</h3>
+              <span class="count-pill" id="agentCountPill">2 Agents</span>
+            </div>
+            <button type="button" class="btn btn-ghost btn-sm" id="btnResetAgents" title="Reset sample test agents">
+              🔄 Reset Demo Agents
+            </button>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="data-table" id="agentsTable">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Agent Name</th>
+                  <th>Status</th>
+                  <th>Registered At</th>
+                  <th>Revoked At</th>
+                  <th class="text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="agentsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 2: Request Simulator Panel -->
+      <section class="card panel-simulator">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="badge-accent">Module 2</span>
+            <h2>Request Simulator Panel</h2>
+          </div>
+          <span class="rule-subtitle">Real-time Policy Evaluation & Autonomous Guardrails</span>
+        </div>
+
+        <div class="card-body">
+          <!-- Quick Demo Presets -->
+          <div class="preset-box">
+            <div class="preset-label">⚡ 1-Click Demo Scenarios (Click to test any rule):</div>
+            <div class="preset-buttons">
+              <button type="button" class="preset-btn" data-preset="revoked">
+                <strong>Rule 1</strong>: Revoked Agent
+              </button>
+              <button type="button" class="preset-btn" data-preset="unknown">
+                <strong>Rule 2</strong>: Unregistered Agent
+              </button>
+              <button type="button" class="preset-btn" data-preset="view">
+                <strong>Rule 3</strong>: View Order
+              </button>
+              <button type="button" class="preset-btn" data-preset="high-order">
+                <strong>Rule 4</strong>: Order &gt; ₹5k
+              </button>
+              <button type="button" class="preset-btn" data-preset="low-order">
+                <strong>Rule 5</strong>: Order ≤ ₹5k
+              </button>
+              <button type="button" class="preset-btn" data-preset="return">
+                <strong>Rule 6</strong>: Return Item
+              </button>
+              <button type="button" class="preset-btn" data-preset="refund">
+                <strong>Rule 7</strong>: Refund
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulator Form -->
+          <form id="simulatorForm" class="simulator-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="simCustomer">Customer Name <span class="required">*</span></label>
+                <input type="text" id="simCustomer" placeholder="e.g. Lipsa" value="Lipsa" required>
+              </div>
+              <div class="form-group">
+                <label for="simAgent">Agent Name <span class="required">*</span></label>
+                <input type="text" id="simAgent" placeholder="e.g. ShopBot" value="ShopBot" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="simAction">Action <span class="required">*</span></label>
+                <select id="simAction" required>
+                  <option value="view order">view order (Read-only)</option>
+                  <option value="place order" selected>place order (Purchase)</option>
+                  <option value="return">return (Return item)</option>
+                  <option value="refund">refund (Financial refund)</option>
+                </select>
+              </div>
+              <div class="form-group" id="amountGroup">
+                <label for="simAmount">Amount (₹) <span class="amount-note" id="amountNote">(Autonomous cap ₹5,000)</span></label>
+                <div class="input-currency-wrapper">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="simAmount" min="0" step="1" value="3500" placeholder="0">
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-amazon btn-lg" id="btnEvaluate">
+              <span class="btn-icon">⚡</span> Evaluate Request
+            </button>
+          </form>
+
+          <!-- Decision Output Card -->
+          <div class="evaluation-result" id="evaluationResult">
+            <div class="result-placeholder" id="resultPlaceholder">
+              <span class="placeholder-icon">🎯</span>
+              <p>Configure a request above or select a 1-Click Scenario, then click <strong>"Evaluate Request"</strong>.</p>
+            </div>
+
+            <div class="result-card hidden" id="resultCard">
+              <div class="result-header">
+                <div class="result-meta">
+                  <span class="decision-label">GATEKEEPER VERDICT</span>
+                  <span class="eval-time" id="resultTimestamp">—</span>
+                </div>
+                <div class="decision-badge" id="resultBadge">ALLOW</div>
+              </div>
+              
+              <div class="result-rule-box">
+                <div class="rule-chip" id="resultRuleChip">Rule 5</div>
+                <div class="rule-reason" id="resultReason">
+                  Rule 5: Order is within ₹5,000 autonomous spending limit.
+                </div>
+              </div>
+
+              <div class="result-summary-grid">
+                <div class="summary-item">
+                  <span class="summary-label">Customer</span>
+                  <span class="summary-value" id="summaryCustomer">Lipsa</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">Agent</span>
+                  <span class="summary-value" id="summaryAgent">ShopBot</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">Action</span>
+                  <span class="summary-value" id="summaryAction">place order</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">Amount</span>
+                  <span class="summary-value" id="summaryAmount">₹3,500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Rule Reference Cheat Sheet (Collapsible / Clean) -->
+    <section class="rules-reference-card">
+      <div class="reference-header" id="rulesToggleHeader">
+        <div class="ref-title">
+          <span class="ref-icon">📜</span>
+          <strong>Gatekeeper Policy Engine Hierarchy (Rules Evaluated in Strict Order):</strong>
+        </div>
+        <span class="ref-toggle-indicator" id="rulesToggleIcon">▾</span>
+      </div>
+      <div class="rules-chips-grid" id="rulesChipsGrid">
+        <div class="rule-pill rule-block">
+          <span class="rule-tag">Rule 1</span>
+          <span class="rule-desc">Agent registered but <strong>REVOKED</strong> &rarr; <span class="badge-red">BLOCK</span></span>
+        </div>
+        <div class="rule-pill rule-block">
+          <span class="rule-tag">Rule 2</span>
+          <span class="rule-desc">Agent <strong>not registered</strong> for customer &rarr; <span class="badge-red">BLOCK</span></span>
+        </div>
+        <div class="rule-pill rule-allow">
+          <span class="rule-tag">Rule 3</span>
+          <span class="rule-desc">Action is <strong>view order</strong> &rarr; <span class="badge-green">ALLOW</span></span>
+        </div>
+        <div class="rule-pill rule-ask">
+          <span class="rule-tag">Rule 4</span>
+          <span class="rule-desc">Action is <strong>place order</strong> &amp; Amount &gt; ₹5,000 &rarr; <span class="badge-yellow">ASK CUSTOMER</span></span>
+        </div>
+        <div class="rule-pill rule-allow">
+          <span class="rule-tag">Rule 5</span>
+          <span class="rule-desc">Action is <strong>place order</strong> &amp; Amount &le; ₹5,000 &rarr; <span class="badge-green">ALLOW</span></span>
+        </div>
+        <div class="rule-pill rule-allow">
+          <span class="rule-tag">Rule 6</span>
+          <span class="rule-desc">Action is <strong>return</strong> &rarr; <span class="badge-green">ALLOW</span></span>
+        </div>
+        <div class="rule-pill rule-ask">
+          <span class="rule-tag">Rule 7</span>
+          <span class="rule-desc">Action is <strong>refund</strong> &rarr; <span class="badge-yellow">ASK CUSTOMER</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel 3: Audit Log Table -->
+    <section class="card panel-audit">
+      <div class="card-header audit-header">
+        <div class="card-title-group">
+          <span class="badge-accent">Module 3</span>
+          <h2>Comprehensive Audit Log</h2>
+          <span class="count-pill" id="auditCountPill">0 Records</span>
+        </div>
+
+        <div class="audit-actions">
+          <button type="button" class="btn btn-outline" id="btnExportCsv">
+            <span class="btn-icon">📥</span> Export Audit Log (CSV)
+          </button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnClearAudit" title="Clear current evaluation audit logs">
+            🗑️ Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="table-wrapper">
+          <table class="data-table" id="auditTable">
+            <thead>
+              <tr>
+                <th style="width: 175px;">Date &amp; Time</th>
+                <th>Customer</th>
+                <th>Agent Name</th>
+                <th>Action</th>
+                <th>Amount</th>
+                <th style="width: 150px;">Decision</th>
+                <th>Rule Triggered</th>
+              </tr>
+            </thead>
+            <tbody id="auditTableBody">
+              <tr class="empty-row" id="emptyAuditRow">
+                <td colspan="7" class="text-center py-4 text-muted">
+                  No requests evaluated yet. Run a simulation above to generate audit logs.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <span>Amazon Agent Gatekeeper &bull; Enrolment No: <strong>pgd202564257</strong></span>
+      <span>Autonomous Agent Security &bull; The Wells Fargo Rule Demonstration</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
